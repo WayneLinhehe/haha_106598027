@@ -19,6 +19,15 @@ atom.o: atom.cpp atom.h
 	
 	
 clean:
-	rm -f *.o *.h.gch hw2
+	
+	ifeq (${OS}, Windows_NT)
+		del *.o *.exe
+	else
+		rm -f *.o *.h.gch hw2
+	endif
+	
+	
+	
+	
 stat:
 	wc *.h *.cpp
