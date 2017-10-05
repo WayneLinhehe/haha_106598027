@@ -12,7 +12,7 @@ endif
 	
 	
 main.o: main.cpp utTerm.h
-	g++ -std=c++11 -c main.cpp
+	g++ -std=gnu++0x -c  main.cpp
 
 number.o: number.cpp number.h
 	g++ -std=c++11 -c number.cpp 
