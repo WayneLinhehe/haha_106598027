@@ -10,7 +10,6 @@ TEST (Number, ctor) {
     Number n(25) ;
     ASSERT_EQ("25", n.value());
 
-    std::cout << "1   " << n.value() << std::endl;
 }
 
 //test Number.symbol()
@@ -18,7 +17,6 @@ TEST (Number, symbol) {
     Number n(25) ;
     ASSERT_EQ("25", n.symbol());
 
-    std::cout << "2   " << n.symbol() << std::endl;
 }
 
 //?- 25 = 25.
@@ -28,7 +26,6 @@ TEST (Number, matchSuccess) {
     Number m(25) ;
     ASSERT_TRUE(n.match(m));
 
-    std::cout << "3   " << std::endl;
 }
 
 //?- 25 = 0.
@@ -37,8 +34,6 @@ TEST (Number, matchFailureDiffValue) {
     Number n(25) ;
     Number m(0) ;
     ASSERT_FALSE(n.match(m));
-
-    std::cout << "4   " << std::endl;
 
 }
 
@@ -51,8 +46,6 @@ TEST (Number, matchFailureDiffConstant) {
 
     ASSERT_FALSE(n.match(tom)) ;
 
-    std::cout << "5   " << std::endl;
-
 }
 
 //?- 25 = X.
@@ -64,7 +57,6 @@ TEST (Number, matchSuccessToVar) {
 
     ASSERT_TRUE( n.match(X) ) ;
 	
-    std::cout << "6   " << std::endl;
 }
 
 //?- tom = 25.
@@ -76,7 +68,6 @@ TEST (Atom, matchFailureDiffConstant) {
 	
 	ASSERT_FALSE( tom.match(n) ) ;
 	
-	std::cout << "7   " << std::endl;
 }
 
 // ?- tom = X.
@@ -89,7 +80,6 @@ TEST (Atom, matchSuccessToVar) {
 	EXPECT_TRUE(tom.match(X));
 	ASSERT_EQ("tom",X.value());
 	
-	std::cout << "8   " << std::endl;
 
 }
 
@@ -104,8 +94,6 @@ TEST (Atom, matchSuccessToVarInstantedToDiffConstant) {
 	EXPECT_TRUE( tom.match(X) );
 	
 	ASSERT_EQ("tom",X.value());
-	
-	std::cout << "9   " << std::endl;
 }
 
 // ?- X = jerry, tom = X.
@@ -121,7 +109,6 @@ TEST (Atom, matchFailureToVarInstantedToDiffConstant) {
 	
 	ASSERT_FALSE( tom.match(X) );
 	
-	std::cout << "10   " << std::endl;
 	
 }
 
@@ -136,7 +123,6 @@ TEST (Variable, matchSuccessToNumber) {
 	
 	ASSERT_EQ("5",X.value());
 	
-	std::cout << "11   " << std::endl;
 }
 
 // ?- X = 25, X = 100.
@@ -152,7 +138,6 @@ TEST (Variable, matchFailureToTwoDiffNumbers) {
 	
 	ASSERT_FALSE( X.match(m) );
 	
-	std::cout << "12   " << std::endl;
 	
 }
 
@@ -169,7 +154,6 @@ TEST (Variable, matchSuccessToAtomThenFailureToNumber) {
 	
 	ASSERT_FALSE( X.match(n) );
 	
-	std::cout << "13   " << std::endl;
 }
 
 //?- tom = X, 25 = X.
@@ -184,8 +168,7 @@ TEST (Variable, matchSuccessToAtomThenFailureToNumber2) {
 	Number n(25) ;
 	
 	ASSERT_FALSE( n.match(X) );
-	
-	std::cout << "14   " << std::endl;
+
 }
 
 //?- X = tom, X = tom.
@@ -199,7 +182,6 @@ TEST(Variable, reAssignTheSameAtom){
 	
 	ASSERT_TRUE( X.match(tom) );
 	
-	std::cout << "15   " << std::endl;
 }
 
 #endif
