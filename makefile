@@ -15,13 +15,13 @@ main.o: main.cpp utTerm.h
 	g++ -std=gnu++0x -c  main.cpp
 
 number.o: number.cpp number.h
-	g++ -std=c++11 -c number.cpp 
+	g++ -std=gnu++0x -c number.cpp 
 	
 variable.o: variable.cpp variable.h
-	g++ -std=c++11 -c variable.cpp
+	g++ -std=gnu++0x -c variable.cpp
 	
 atom.o: atom.cpp atom.h
-	g++ -std=c++11 -c atom.cpp
+	g++ -std=gnu++0x -c atom.cpp
 	
 
 	
