@@ -3,7 +3,13 @@ all:  hw2
 
 
 hw2: mainTerm.o number.o atom.o variable.o
+ifeq (${OS}, Windows_NT)
+	g++ -o hw2 mainTerm.o number.o atom.o variable.o -lgtest
+else
 	g++ -o hw2 mainTerm.o number.o atom.o variable.o -lgtest -lpthread
+endif
+	
+	
 	
 mainTerm.o: mainTerm.cpp
 	g++ -std=c++11 -c mainTerm.cpp
