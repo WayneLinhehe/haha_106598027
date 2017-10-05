@@ -1,8 +1,14 @@
 all:  hw2
 
 
+hw2: main.o
+ifeq (${OS}, Windows_NT)
+	g++ -o exp main -lgtest
+else
+	g++ -o exp main.o -lgtest -lpthread
+endif
 
-hw2: mainTerm.o number.o atom.o variable.o
+main.o: mainTerm.o number.o atom.o variable.o
 	g++ -o hw2 mainTerm.o number.o atom.o variable.o -lgtest -lpthread
 	
 mainTerm.o: mainTerm.cpp
@@ -25,8 +31,6 @@ clean:
 	else
 		rm -f *.o *.h.gch hw2
 	endif
-	
-	
 	
 	
 stat:
