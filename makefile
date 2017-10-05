@@ -27,7 +27,7 @@ atom.o: atom.cpp atom.h
 	
 clean:
 ifeq (${OS}, Windows_NT)
-	del *.exe
+	del *.o *.exe
 else
 	rm -f *.o hw2
 endif
