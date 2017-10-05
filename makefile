@@ -1,14 +1,8 @@
 all:  hw2
 
 
-hw2: main.o
-ifeq (${OS}, Windows_NT)
-	g++ -o exp main -lgtest
-else
-	g++ -o exp main.o -lgtest -lpthread
-endif
 
-main.o: mainTerm.o number.o atom.o variable.o
+hw2: mainTerm.o number.o atom.o variable.o
 	g++ -o hw2 mainTerm.o number.o atom.o variable.o -lgtest -lpthread
 	
 mainTerm.o: mainTerm.cpp
@@ -23,15 +17,11 @@ variable.o: variable.cpp variable.h
 atom.o: atom.cpp atom.h
 	g++ -std=c++11 -c atom.cpp
 	
+
 	
 clean:
-	
-	ifeq (${OS}, Windows_NT)
-		del *.o *.exe
-	else
-		rm -f *.o *.h.gch hw2
-	endif
-	
-	
-stat:
-	wc *.h *.cpp
+ifeq (${OS}, Windows_NT)
+	del *.o *.exe
+else
+	rm -f *.o hw2
+endif
