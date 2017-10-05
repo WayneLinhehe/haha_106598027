@@ -11,7 +11,7 @@ endif
 	
 	
 	
-mainTerm.o: mainTerm.cpp
+mainTerm.o: mainTerm.cpp utTerm.h
 	g++ -std=c++11 -c mainTerm.cpp
 
 number.o: number.cpp number.h
