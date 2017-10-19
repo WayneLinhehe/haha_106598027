@@ -85,8 +85,6 @@ bool Variable::match(Struct &a){
 	}
 	else if ( this->assignable() == false ) {
 		
-		
-		
 		ans = true ;
 		
 	}

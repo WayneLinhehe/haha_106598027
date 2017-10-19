@@ -87,7 +87,6 @@ TEST(Struct, var)
 	ASSERT_EQ("s(X)",s.symbol());
 	ASSERT_EQ("s(X)",s.value());
 	
-	std::cout << "1   " << std::endl;
 }
 
 // Given there is Struct s contains a Variable X
@@ -107,7 +106,6 @@ TEST(Struct, var_match_atom)
 	ASSERT_EQ("s(X)",s.symbol());
 	ASSERT_EQ("s(tom)",s.value());
 	
-	std::cout << "2   " << std::endl;
 }
 
 // Given there are Struct s1 and Struct s2
@@ -128,7 +126,6 @@ TEST(Struct, nested_struct1)
 	ASSERT_EQ("s1(s2(X))",s1.symbol());
 	ASSERT_EQ("s1(s2(X))",s1.value());
 	
-	std::cout << "3   " << std::endl;
 }
 
 // Given there are Struct s1 contains Struct s2
@@ -151,9 +148,6 @@ TEST(Struct, nested_struct2)
 	
 	ASSERT_EQ("s1(s2(X))",s1.symbol());
 	ASSERT_EQ("s1(s2(tom))",s1.value());
-	
-	std::cout << "4   " << std::endl;
-	
 	
 }
 
@@ -178,7 +172,6 @@ TEST(Struct, nested_struct3)
 	ASSERT_EQ("s1(s2(X))",s1.symbol());
 	ASSERT_EQ("s1(s2(3.14))",s1.value());
 	
-	std::cout << "5   " << std::endl;
 }
 
 // Given there are Struct s1 contains Struct s2 and Variable X
@@ -205,7 +198,6 @@ TEST(Struct, nested_struct_and_multiVariable)
 	ASSERT_EQ("s1(s2(Y), X)",s1.symbol());
 	ASSERT_EQ("s1(s2(kent_beck), kent_beck)",s1.value());
 	
-	std::cout << "6   " << std::endl;
 }
 
 
