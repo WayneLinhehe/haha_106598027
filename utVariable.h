@@ -34,7 +34,6 @@ TEST(Variable , numE_to_varX){
 	ASSERT_TRUE(X.match(n)) ;
 	ASSERT_EQ( "2.7182", X.value());
 	
-	std::cout << "1   " << std::endl;
 }
 
 // ?- X=Y, X=1.
@@ -50,7 +49,6 @@ TEST (Variable, varY_to_varX_and_num1_to_varX) {
 	EXPECT_TRUE(X.match(n));
 	ASSERT_EQ( "1", Y.value() ) ;
 	
-	std::cout << "2   " << std::endl;
 }
   
 // ?- X=Y, Y=1.
@@ -66,7 +64,6 @@ TEST (Variable, varY_to_varX_and_num1_to_varY) {
 	EXPECT_TRUE(Y.match(n));
 	ASSERT_EQ( "1", X.value() ) ;
 	
-	std::cout << "3   " << std::endl;
 }
 
 // ?- X=X, X=1.
@@ -81,7 +78,6 @@ TEST (Variable, varX_match_varX_and_num1_to_varX) {
 	EXPECT_TRUE(X.match(n));
 	ASSERT_EQ( "1", X.value() ) ;
 	
-	std::cout << "4   " << std::endl;
 }
 
 // ?- Y=1, X=Y.
@@ -96,7 +92,6 @@ TEST (Variable, num1_to_varY_and_varX_match_varY) {
 	EXPECT_TRUE(X.match(Y));
 	ASSERT_EQ( "1", X.value() ) ;
 	
-	std::cout << "5   " << std::endl;
 }
 
 // ?- X=Y, Y=Z, Z=1
@@ -114,7 +109,6 @@ TEST (Variable, num1_to_varZ_to_varY_to_varX) {
 	ASSERT_EQ( "1", Y.value() ) ;
 	ASSERT_EQ( "1", Z.value() ) ;
 	
-	std::cout << "6   " << std::endl;
 }
 
 // ?- X=Y, X=Z, Z=1
@@ -132,7 +126,6 @@ TEST (Variable, num1_to_varZ_to_varX_and_varY_to_varX) {
 	ASSERT_EQ( "1", Y.value() ) ;
 	ASSERT_EQ( "1", Z.value() ) ;
 	
-	std::cout << "7   " << std::endl;
 }
 
 // s(X)
@@ -158,7 +151,6 @@ TEST (Variable, Struct1) {  //FAIL
 	ASSERT_EQ( "Y", Y.symbol() ) ;
 	ASSERT_EQ( "s(X)", Y.value() ) ;
 	
-	std::cout << "8   " << std::endl;
 	
 }
 
@@ -189,12 +181,12 @@ TEST (Variable, Struct2) {  //FAIL
 	EXPECT_TRUE(Y.match(s));
 	
 	
-	std::cout << "===" << X.value() << std::endl;
+	
 	
 	ASSERT_EQ( "Y", Y.symbol() ) ;
 	ASSERT_EQ( "s(teddy)", Y.value() ) ;
 	
-	std::cout << "9   " << std::endl;
+	
 	
 	
 }
