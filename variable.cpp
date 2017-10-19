@@ -74,11 +74,11 @@ bool Variable::match(Variable &a){
 }
 
 bool Variable::match(Struct &a){
-	/*
+	
 	bool ans = false ;
 	if ( this->assignable() ) {
 		
-		this->_value = a._value;
+		*this->_value = a.value();
 		this->_assignable = false ;
 		ans = true ;
 		
@@ -93,7 +93,7 @@ bool Variable::match(Struct &a){
 	
 	
 	return ans ;
-	*/
+	
 	
 }
 

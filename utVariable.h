@@ -181,11 +181,13 @@ TEST (Variable, Struct2) {  //FAIL
 	Variable Y("Y") ;
 	Atom teddy("teddy") ;
 	
+	EXPECT_TRUE(X.match(teddy));
+	
 	std::vector<Term *> v = {&X};
 	Struct s(Atom("s"), v) ;
 	
 	EXPECT_TRUE(Y.match(s));
-	EXPECT_TRUE(X.match(teddy));
+	
 	
 	std::cout << "===" << X.value() << std::endl;
 	
