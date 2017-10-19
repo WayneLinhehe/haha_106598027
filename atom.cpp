@@ -2,6 +2,7 @@
 #include "variable.h"
 #include "atom.h"
 
+
 #include <iostream>
 using namespace std;
 
@@ -11,11 +12,13 @@ bool Atom::match(Variable &a){
 	
 	bool ans = false ;
 	if ( a.assignable() ) {
-		a.assigned( this->value() ) ;
+		*(a._value) = this->symbol() ;
+		a._assignable = false ;
+		
 		ans = true ;
 	}
 	
-	else if ( a.value() == this->value() ) {
+	else if ( *(a._value) == this->symbol() ) {
 		ans = true ;
 	}
 	
@@ -24,7 +27,7 @@ bool Atom::match(Variable &a){
 	
 }
 
-bool Atom::match(Number a){
+bool Atom::match(Number& a){
 	//cout << "--   " << endl;
-	return _symbol == a.symbol();
+	return *_symbol == a.symbol();
 }

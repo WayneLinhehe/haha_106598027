@@ -2,30 +2,36 @@
 #define ATOM_H
 
 
-#endif
-#include <string> 
-using namespace std;
+#include "term.h"
+#include <string>
 
-class Number ;
-class Variable ;
+using std::string;
 
-class Atom {
+class Atom : public Term{
 public:
-    Atom (string s) {
-		_symbol = s ;
-		_value = s ;
-	}
+  Atom (string s) {
+	  *_symbol = (s) ;
+	  
+  }
 
-    string value(){ return _value; }
-    string symbol(){ return _symbol; }
-	
-	bool match(Atom a) {return _symbol == a.symbol();}
-	bool match(Number a ) ;
+  string symbol() const{
+    return *_symbol ;
+  }
+  
+  string value() const{
+    return *_symbol ;
+  };
+  
+  
+	bool match(Atom &a) {return *_symbol == a.symbol();}
+	bool match(Number &a ) ;
 	bool match(Variable &a ) ;
-	
-private:
-    string _symbol;
-    string _value;
 
-
+	string* _symbol = new string [1];
+    
+  private:
+    
 };
+
+
+#endif

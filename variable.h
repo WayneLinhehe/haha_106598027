@@ -1,62 +1,44 @@
 #ifndef VARIABLE_H
 #define VARIABLE_H
 
-
-
-#endif
-
+#include "term.h"
 #include <string> 
 using namespace std;
 
 class Number ;
 class Atom ;
+class Struct ;
 
-class Variable{
+class Variable : public Term {
 public:
-	Variable(string s):_symbol(s){}
+	Variable(string s):_symbol(s){
+		*_value = s ;
+	}
 	
-	string value(){ return _value; }
-	string symbol(){ return _symbol; }
+	string value() const { return *_value; }
+	string symbol() const { return _symbol; }
 	bool assignable(){ return _assignable; }
   
-	bool match( Variable a ) {return _symbol == a.symbol();}
-	bool match( Atom a ) ;
-	bool match( Number a ) ;
+	bool match( Variable &a ) ;
+	bool match( Atom &a ) ;
+	bool match( Number &a ) ;
+	bool match( Struct &a ) ;
 	
+	/*
 	void assigned( string a ) {
-		_value = a ;
+		_value = (a) ;
 		_assignable = false ;
 	}
-  
-/*
-  bool match( Atom atom ){
-      bool ret = _assignable;
-      if(_assignable){
-          _value = atom.symbol() ;
-          _assignable = false;
-      }
-      else if ( _value == atom.symbol() ) {
-          ret = true ;
-      }
-      return ret;
-  }
-*/
-
-/*
-    bool match( Number a ){
-        bool ret = _assignable;
-        if(_assignable){
-            _value = a.symbol() ;
-            _assignable = false;
-        }
-        else if ( _value == a.symbol() ) {
-            ret = true ;
-        }
-        return ret;
-    }
-*/
-private:
-    string _value;
+	*/
+	
+	string *_value = new string[1];
     bool _assignable = true;
-    string  _symbol;
+    string _symbol;
+	
+	
+	
+private:
+    
 };
+
+#endif

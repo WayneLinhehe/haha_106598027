@@ -2,39 +2,40 @@
 #define NUMBER_H
 
 
-#endif
-#include <string> 
+#include "term.h"
+#include <string>
 #include <sstream>
-using namespace std;
+
+using std::string;
 
 class Variable ;
 class Atom ;
+class Struct ;
 
-
-class Number {
-public:
-    Number (int s) {
-
-        stringstream ss;
-        ss<<s;
-        _symbol = ss.str();
-        _value = ss.str();
-
-    }
-
-    string value(){ return _value; }
-    string symbol(){ return _symbol; }
-
-
-	bool match(Number a){ return _symbol == a.symbol();}
-    bool match(Variable &a) ; 
-	bool match(Atom a);
+class Number : public Term{
 	
+public:
+	Number(double value){
+		stringstream ss;
+        ss<<value;
+        
+        *_value = ss.str();
+	}
+	string value() const { return *_value; }
+    string symbol() const { return *_value; }
+	
+	bool match(Number &a){ return *_value == a.symbol();}
+    bool match(Variable &a) ; 
+	bool match(Atom &a);
+	bool match(Struct &a);
+	
+	string *_value = new string[1];
 
 private:
 
-    string _symbol;
-    string _value;
+    
 
 
 };
+
+#endif

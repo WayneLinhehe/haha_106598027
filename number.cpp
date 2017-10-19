@@ -3,6 +3,7 @@
 #include "atom.h"
 
 #include <iostream>
+
 using namespace std;
 
 
@@ -10,11 +11,13 @@ bool Number::match(Variable &a){
 	
 	bool ans = false ;
 	if ( a.assignable() ) {
-		a.assigned( this->value() ) ;
+		*(a._value) = this->value() ;
+		a._assignable = false ;
+		
 		ans = true ;
 	}
 	
-	else if ( a.value() == this->value() ) {
+	else if ( *(a._value) == this->value() ) {
 		ans = true ;
 	}
 	
@@ -23,7 +26,7 @@ bool Number::match(Variable &a){
 	
 }
 
-bool Number::match(Atom a){
+bool Number::match(Atom &a){
 	//cout << "--   " << endl;
-	return _symbol == a.symbol();
+	return *_value == a.symbol();
 }
