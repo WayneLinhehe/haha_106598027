@@ -1,24 +1,27 @@
 all:  hw3
+ 
+hw3: main.o number.o atom.o variable.o
+ifeq (${OS}, Windows_NT)
+	g++ -o hw3 main.o number.o atom.o variable.o -lgtest
+else
+	g++ -o hw3 main.o number.o atom.o variable.o -lgtest -lpthread
+endif
 
+main.o: main.cpp utTerm.h
+	g++ -std=gnu++0x -c  main.cpp
+  
+number.o: number.cpp number.h
+	g++ -std=gnu++0x -c number.cpp 
 
+variable.o: variable.cpp variable.h
+	g++ -std=gnu++0x -c variable.cpp
+	
+atom.o: atom.cpp atom.h
+	g++ -std=gnu++0x -c atom.cpp
 
-hw3: mainTerm.o number.o atom.o variable.o
-	g++ -o hw3 mainTerm.o number.o atom.o variable.o -lgtest -lpthread
-	
-mainTerm.o: mainTerm.cpp 
-	g++ -std=c++11 -c mainTerm.cpp
-
-number.o: number.cpp number.h term.h
-	g++ -std=c++11 -c number.cpp 
-	
-variable.o: variable.cpp variable.h term.h
-	g++ -std=c++11 -c variable.cpp
-	
-atom.o: atom.cpp atom.h term.h
-	g++ -std=c++11 -c atom.cpp
-	
-	
 clean:
-	rm -f *.o *.h.gch hw3
-stat:
-	wc *.h *.cpp
+ifeq (${OS}, Windows_NT)
+	del *.o *.exe
+else
+	rm -f *.o hw3
+endif
