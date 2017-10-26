@@ -102,6 +102,8 @@ TEST(List, matchToStructShouldFail) {
 	std::vector<Term *> v = {&X};
 	Struct s(Atom("s"), v);
 	
+	
+	
 	vector<Term *> args = {&n1 , &X , &terence_tao};
 	List l(args);
 	
