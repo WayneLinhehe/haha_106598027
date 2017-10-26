@@ -1,44 +1,30 @@
 #ifndef VARIABLE_H
 #define VARIABLE_H
 
-#include "term.h"
-#include <string> 
-using namespace std;
-
-class Number ;
-class Atom ;
-class Struct ;
+#include <string>
+#include "atom.h"
+using std::string;
 
 class Variable : public Term {
 public:
-	Variable(string s):_symbol(s){
-		*_value = s ;
-	}
-	
-	string value() const { return *_value; }
-	string symbol() const { return _symbol; }
-	bool assignable(){ return _assignable; }
-  
-	bool match( Variable &a ) ;
-	bool match( Atom &a ) ;
-	bool match( Number &a ) ;
-	bool match( Struct &a ) ;
-	
-	/*
-	void assigned( string a ) {
-		_value = (a) ;
-		_assignable = false ;
-	}
-	*/
-	
-	string *_value = new string[1];
-    bool _assignable = true;
-    string _symbol;
-	
-	
-	
+  Variable(string s):Term(s), _inst(0){}
+  string value() const {
+    if (_inst)
+      return _inst->value();
+    else
+      return Term::value();
+  }
+  bool match( Term & term ){
+    if (this == &term)
+      return true;
+    if(!_inst){
+      _inst = &term ;
+      return true;
+    }
+    return _inst->match(term);
+  }
 private:
-    
+  Term * _inst;
 };
 
 #endif
