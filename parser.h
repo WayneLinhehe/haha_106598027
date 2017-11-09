@@ -41,8 +41,13 @@ public:
 		
 		
 		if(_scanner.currentChar() == ']'){
+			
 			_scanner.nextToken();
 			vector<Term *> args = {};
+			if(_currentToken == ')'){
+				throw string("unexpected token");
+			}
+			
 			return new List(args);
 		} else {
 			
