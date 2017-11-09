@@ -51,11 +51,12 @@ public:
 			return new List(args);
 		} else {
 			
+			
+			
+			vector<Term*> t = getArgs();
 			if(_currentToken == ')'){
 				throw string("unexpected token");
 			}
-			
-			vector<Term*> t = getArgs();
 			return new List(t);
 			
 		}
