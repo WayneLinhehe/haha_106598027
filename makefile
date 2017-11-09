@@ -1,4 +1,4 @@
-all: utAtom utVariable utScanner utList hw5
+all: hw5
 
 
 hw5: mainParser.o parser.h atom.o utParser.h
