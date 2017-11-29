@@ -1,13 +1,13 @@
 all: hw6
 
-hw6: mainParser.o atom.o
+hw6: mainScanner.o atom.o
 	ifeq (${OS}, Windows_NT)
-		g++ -o hw6 mainParser.o atom.o -lgtest
+		g++ -o hw6 mainScanner.o atom.o -lgtest
 	else
-		g++ -o hw6 mainParser.o atom.o -lgtest -lpthread
+		g++ -o hw6 mainScanner.o atom.o -lgtest -lpthread
 	endif
 
-mainParser.o: mainScanner.cpp utParser.h parser.h  atom.h struct.h variable.h scanner.h
+mainScanner.o: mainScanner.cpp utParser.h parser.h  atom.h struct.h variable.h scanner.h
 	g++ -std=gnu++0x -c mainScanner.cpp
 
 mainAtom.o: mainAtom.cpp utAtom.h atom.h utStruct.h struct.h
@@ -21,9 +21,6 @@ mainVariable.o: mainVariable.cpp utVariable.h variable.h
 
 mainList.o: mainList.cpp utList.h list.h
 	g++ -std=gnu++0x -c mainList.cpp
-
-mainScanner.o: mainScanner.cpp utScanner.h scanner.h  atom.h struct.h variable.h
-	g++ -std=gnu++0x -c mainScanner.cpp
 
 
 clean:
