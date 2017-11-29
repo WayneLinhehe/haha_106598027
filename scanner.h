@@ -15,7 +15,6 @@ public:
   void setInput(string in) {buffer = in;}
 
   int nextToken() {
-	  //std::cout << pos << std::endl;
       if (skipLeadingWhiteSpace() >= buffer.length())
         return EOS;
       else if (isdigit(currentChar())) {
@@ -25,7 +24,7 @@ public:
         string s = extractAtom();
         processToken<ATOM>(s);
         return ATOM;
-      }   else if (isSpecialCh(currentChar())) {
+      } else if (isSpecialCh(currentChar())) {
         string s = extractAtomSC();
         processToken<ATOMSC>(s);
         return ATOMSC;
@@ -33,11 +32,7 @@ public:
         string s = extractVar();
         processToken<VAR>(s);
         return VAR;
-      }else if (currentChar() == '[') {  //I DO
-		pos++ ;
-        return LIST;
-      }  
-	  else {
+      } else {
         _tokenValue = NONE;
         return extractChar();
       }
@@ -68,16 +63,7 @@ public:
     for (;isalnum(buffer[pos]); ++pos);
     return buffer.substr(posBegin, pos-posBegin);
   }
-  
-  /*
-  string extractList() {
-    int posBegin = position();
-    for (;buffer[pos] == ']'; ++pos);
-	pos++ ;
-    return buffer.substr(posBegin, pos-posBegin);
-  }
-*/
-  
+
   string extractAtomSC() {
     int posBegin = position();
     for (;isSpecialCh(buffer[pos]); ++pos);

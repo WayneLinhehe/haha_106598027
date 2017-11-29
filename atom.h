@@ -11,8 +11,6 @@ public:
   virtual string symbol() const {return _symbol;}
   virtual string value() const {return symbol();}
   virtual bool match(Term & a);
-  virtual int arity(){};
-  virtual Term * args(int index) {} ;
 protected:
   Term ():_symbol(""){}
   Term (string s):_symbol(s) {}
