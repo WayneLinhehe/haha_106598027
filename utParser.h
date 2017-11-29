@@ -189,17 +189,14 @@ TEST_F(ParserTest, parseList) {
 // When parser parses all terms via scanner.
 // Then it should return a string: "unexpected token" as exception.
 TEST_F(ParserTest, illegal1) {
-	bool test=false;
 	Scanner scanner("[1, 2)");
 	Parser parser(scanner);
 	try{
 		parser.createTerm();
 	}
 	catch ( const string  err) {
-		test=true;
 	ASSERT_EQ("unexpected token",err);
 	}
-	if (!test)	ASSERT_TRUE(false);
 }
 
 // Given there is string: ".(1,[])" in scanner.

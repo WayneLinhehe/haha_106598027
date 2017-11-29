@@ -41,22 +41,16 @@ public:
 		
 		
 		if(_scanner.currentChar() == ']'){
-			
 			_scanner.nextToken();
 			vector<Term *> args = {};
-			if(_currentToken == ')'){
-				throw string("unexpected token");
-			}
-			
 			return new List(args);
 		} else {
 			
-			
-			
-			vector<Term*> t = getArgs();
 			if(_currentToken == ')'){
 				throw string("unexpected token");
 			}
+			
+			vector<Term*> t = getArgs();
 			return new List(t);
 			
 		}
