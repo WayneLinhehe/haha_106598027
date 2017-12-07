@@ -1,9 +1,11 @@
 #include "atom.h"
 #include "variable.h"
+#include "list.h"
+#include "iterator.h"
+
 #include <typeinfo>
 #include <iostream>
 #include <string>
-#include "list.h"
 using std::vector;
 
 string List::symbol() const{
@@ -33,9 +35,27 @@ string List::value() const{
         ret += (*it)->value()+", ";
         }
         ret += (*it)->value()+"]";
+	}
+	return ret;
 }
-return ret;
+/*
+Iterator * List::createIterator()
+{
+  return new StructIterator(this);
 }
+*/
+
+Iterator<Term*> * List::createDFSIterator()
+{
+  return new StructIterator1(this);
+}
+
+Iterator<Term*> * List::createBFSIterator()
+{
+  return new StructIterator2(this);
+}
+
+
 bool List::match(Term & term) {
     if(typeid(term) ==  typeid(List)){
         bool ret =true;
@@ -85,3 +105,7 @@ List * List::tail() const {
     List *ls= new List(_clone_elements) ;
     return ls;
 }
+
+
+
+
